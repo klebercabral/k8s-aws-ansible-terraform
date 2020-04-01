@@ -13,6 +13,14 @@ module "firewall" {
   source                    = "terraform-aws-modules/security-group/aws"
   name                      = "k8s-descomplicando-ansible-sg"
   vpc_id                    = module.network.vpc_id
+  egress_with_cidr_blocks  = [
+  {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = "0.0.0.0/0"
+  }
+  ]
   ingress_with_cidr_blocks  = [
   {
     from_port   = 22
