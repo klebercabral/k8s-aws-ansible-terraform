@@ -120,7 +120,7 @@ module "ec2" {
   name                      = "k8s-descomplicando-ansible"
   instance_count            = 3
   ami                       = "ami-07ebfd5b3428b6f4d"
-  instance_type             = "t2.micro"
+  instance_type             = "t2.medium"
   key_name                  = "lab"
   vpc_security_group_ids    = [module.firewall.this_security_group_id]
   subnet_id                 = module.network.public_subnets[0]
