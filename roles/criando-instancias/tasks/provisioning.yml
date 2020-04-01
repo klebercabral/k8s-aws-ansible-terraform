@@ -17,6 +17,7 @@
   add_host:
     name: '{{ tf_aws.outputs.public3.value }}'
     groups: k8s-workers
+    K8S_MASTER_NODE_IP: '{{ tf_aws.outputs.private1.value }}'
 - name: Wait 300 seconds for port 22 to become open and contain "OpenSSH"
   wait_for:
     port: 22
