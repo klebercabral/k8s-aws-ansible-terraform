@@ -113,6 +113,13 @@ module "firewall" {
     description = "Giropops App Prometheus Metric"
     cidr_blocks = "0.0.0.0/0"
   },
+  {
+    from_port   = 9100
+    to_port     = 9100
+    protocol    = "tcp"
+    description = "Giropops App Prometheus Metric"
+    cidr_blocks = "10.0.101.0/24"
+  },
   ]
 }
 module "ec2" {
