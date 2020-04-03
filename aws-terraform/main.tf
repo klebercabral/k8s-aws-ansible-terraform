@@ -2,6 +2,9 @@ provider "aws" {
   region                    = "us-east-1"
   version                   = "~> 2.0"
 }
+data "http" "myip" {
+  url = "https://api.ipify.org/"
+}
 module "network" {
   source                    = "terraform-aws-modules/vpc/aws"
   name                      = "k8s-descomplicando-ansible-vpc"
@@ -76,7 +79,7 @@ module "firewall" {
     to_port     = 32767
     protocol    = "tcp"
     description = "NodePort Services"
-    cidr_blocks = "0.0.0.0/0"
+    cidr_blocks = "${chomp(data.http.myip.body)}/32"
   },
   {
     from_port   = 6783
