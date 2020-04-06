@@ -54,7 +54,7 @@
   become: yes
   user: ubuntu
   roles:
-  - { role: deploy-app, tags: ["deploy_app_role"] }
+  - { role: deploy-app-v1, tags: ["deploy_app_v1_role"] }
 
 - hosts: k8s-master
   become: yes
