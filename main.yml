@@ -1,6 +1,6 @@
 - hosts: local
   roles:
-  - criando-instancias
+  - { role: criando-instancias, tags: ["criando-instancias"] }
 
 - hosts: k8s-master
   become: yes
@@ -55,3 +55,9 @@
   user: ubuntu
   roles:
   - { role: deploy-app, tags: ["deploy_app_role"] }
+
+- hosts: k8s-master
+  become: yes
+  user: ubuntu
+  roles:
+  - { role: deploy-app-v2, tags: ["deploy_app_v2_role"] }
