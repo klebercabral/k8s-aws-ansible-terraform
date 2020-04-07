@@ -1,5 +1,5 @@
 provider "aws" {
-  region                    = "us-east-1"
+  region                    = var.region
   version                   = "~> 2.0"
 }
 data "http" "myip" {
@@ -8,9 +8,9 @@ data "http" "myip" {
 module "network" {
   source                    = "terraform-aws-modules/vpc/aws"
   name                      = "k8s-descomplicando-ansible-vpc"
-  cidr                      = "10.0.0.0/16"
-  azs                       = ["us-east-1a"]
-  public_subnets            = ["10.0.101.0/24"]
+  cidr                      = var.vpc_cidr
+  azs                       = var.vpc_azs
+  public_subnets            = var.vpc_public_subnets
 }
 module "firewall" {
   source                    = "terraform-aws-modules/security-group/aws"
@@ -129,9 +129,9 @@ module "ec2" {
   source                    = "terraform-aws-modules/ec2-instance/aws"
   name                      = "k8s-descomplicando-ansible"
   instance_count            = 3
-  ami                       = "ami-07ebfd5b3428b6f4d"
-  instance_type             = "t2.medium"
-  key_name                  = "lab"
+  ami                       = var.ec2_ami
+  instance_type             = var.ec2_instance_type
+  key_name                  = var.iam_key_name
   vpc_security_group_ids    = [module.firewall.this_security_group_id]
   subnet_id                 = module.network.public_subnets[0]
 }
