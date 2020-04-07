@@ -15,6 +15,8 @@ vi aws-terraform/variables.tf
 ## Usage
 
 ```python
+ssh-agent zsh
+ssh-add your_key_pair.pem
 ansible-playbook -i hosts main.yml
 ```
 
