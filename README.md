@@ -6,6 +6,12 @@ Projeto k8s na AWS provisionado com Terraform (VPC, SecurityGroup e EC2) e Ansib
 
 Chave IAM com permissão de criar VPC, SecurityGroup e EC2
 
+## Ajustar para seu ambiente AWS
+
+```python
+vi aws-terraform\variables.tf
+```
+
 ## Usage
 
 ```python
