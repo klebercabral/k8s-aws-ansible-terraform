@@ -131,7 +131,7 @@ module "ec2" {
   instance_count            = 3
   ami                       = var.ec2_ami
   instance_type             = var.ec2_instance_type
-  key_name                  = var.iam_key_name
+  key_name                  = var.key_pair_name
   vpc_security_group_ids    = [module.firewall.this_security_group_id]
   subnet_id                 = module.network.public_subnets[0]
 }
