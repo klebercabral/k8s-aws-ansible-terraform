@@ -9,7 +9,7 @@ Chave IAM com permissão de criar VPC, SecurityGroup e EC2
 ## Ajustar para seu ambiente AWS
 
 ```python
-vi aws-terraform\variables.tf
+vi aws-terraform/variables.tf 
 ```
 
 ## Usage
