@@ -9,4 +9,4 @@ localhost ansible_connection=local ansible_python_interpreter=python gather_fact
 K8S_API_SECURE_PORT=6443
 
 [all:vars]
-ansible_ssh_extra_args='-o StrictHostKeyChecking=no'
+ansible_ssh_extra_args='-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
